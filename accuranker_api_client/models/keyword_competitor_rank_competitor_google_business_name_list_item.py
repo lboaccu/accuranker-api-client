@@ -25,7 +25,7 @@ class KeywordCompetitorRankCompetitorGoogleBusinessNameListItem:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = src_dict.copy() if src_dict else dict(src_dict.copy())
         keyword_competitor_rank_competitor_google_business_name_list_item = cls(
         )
 

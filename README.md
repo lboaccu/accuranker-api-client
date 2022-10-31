@@ -1,4 +1,4 @@
-# accu-ranker-api-client
+# accuranker-api-client
 A client library for accessing AccuRanker API
 
 ## Usage

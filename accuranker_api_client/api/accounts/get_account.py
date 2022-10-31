@@ -25,7 +25,7 @@ def _get_kwargs(
     
 
     params: Dict[str, Any] = {}
-    params["fields"] = fields
+    params["fields"] = ','.join(fields)
 
 
 

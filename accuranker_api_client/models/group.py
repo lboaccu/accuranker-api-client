@@ -34,7 +34,7 @@ class Group:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = src_dict.copy() if src_dict else dict(src_dict.copy())
         name = d.pop("name")
 
         organization_id = d.pop("organization_id")

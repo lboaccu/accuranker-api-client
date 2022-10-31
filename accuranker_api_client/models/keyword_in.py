@@ -99,7 +99,7 @@ class KeywordIn:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = src_dict.copy() if src_dict else dict(src_dict.copy())
         domain_id = d.pop("domain_id")
 
         keywords = cast(List[str], d.pop("keywords"))

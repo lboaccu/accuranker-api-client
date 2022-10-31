@@ -29,7 +29,7 @@ def _get_kwargs(
 
 
     params: Dict[str, Any] = {}
-    params["fields"] = fields
+    params["fields"] = ','.join(fields)
 
 
     params["period_from"] = period_from

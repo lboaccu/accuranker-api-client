@@ -25,9 +25,8 @@ class KeywordInitialRankSearchIntentItem:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
-        keyword_initial_rank_search_intent_item = cls(
-        )
+        d = src_dict.copy() if src_dict else dict(src_dict.copy())
+        keyword_initial_rank_search_intent_item = cls()
 
         keyword_initial_rank_search_intent_item.additional_properties = d
         return keyword_initial_rank_search_intent_item

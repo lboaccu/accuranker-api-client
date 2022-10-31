@@ -8,11 +8,14 @@ from ..types import UNSET, Unset
 T = TypeVar("T", bound="CountryLocale")
 
 class CountryLocaleFields(NamedTuple):
-    id = "id"
-    country_code = "country_code"
-    region = "region"
-    locale = "locale"
-    locale_short = "locale_short"
+    """
+    Nested named tuple.
+    """
+    id = "search_locale.id"
+    country_code = "search_locale.country_code"
+    region = "search_locale.region"
+    locale = "search_locale.locale"
+    locale_short = "search_locale.locale_short"
     
 
 @attr.s(auto_attribs=True)
@@ -62,7 +65,7 @@ class CountryLocale:
 
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
-        d = src_dict.copy()
+        d = src_dict.copy() if src_dict else dict(src_dict.copy())
         id = d.pop("id", UNSET)
 
         country_code = d.pop("country_code", UNSET)
