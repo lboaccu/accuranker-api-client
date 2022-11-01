@@ -11,7 +11,7 @@ def _get_kwargs(
     domain_id: int,
     *,
     client: AuthenticatedClient,
-    keyword_match: Union[Unset, None, str] = UNSET,
+    keyword_contains: Union[Unset, None, str] = UNSET,
 
 ) -> Dict[str, Any]:
     url = "{}/overview/keywords_for_domain/{domain_id}".format(
@@ -25,7 +25,7 @@ def _get_kwargs(
     
 
     params: Dict[str, Any] = {}
-    params["keyword_match"] = keyword_match
+    params["keyword_contains"] = keyword_contains
 
 
 
@@ -74,7 +74,7 @@ def sync_detailed(
     domain_id: int,
     *,
     client: AuthenticatedClient,
-    keyword_match: Union[Unset, None, str] = UNSET,
+    keyword_contains: Union[Unset, None, str] = UNSET,
 
 ) -> Response[List[KeywordOut]]:
     """List all your keywords on the domain.
@@ -84,13 +84,13 @@ def sync_detailed(
         curl -X GET \
         -H \"Authorization: Token {your api_token here}\" \
         https://app.accuranker.com/overview/keywords_for_domain/{your domain id
-    here}\?keyword_match=test
+    here}\?keyword_contains=test
 
 
     Args:
         domain_id (int): Id of the domain to get keywords for.
-        keyword_match (Union[Unset, None, str]): Only returns keyword that contains the value of
-            keyword_match
+        keyword_contains (Union[Unset, None, str]): Only returns keyword that contains the value of
+            keyword_contains
 
     Returns:
         Response[List[KeywordOut]]
@@ -100,7 +100,7 @@ def sync_detailed(
     kwargs = _get_kwargs(
         domain_id=domain_id,
 client=client,
-keyword_match=keyword_match,
+keyword_contains=keyword_contains,
 
     )
 
@@ -115,7 +115,7 @@ def sync(
     domain_id: int,
     *,
     client: AuthenticatedClient,
-    keyword_match: Union[Unset, None, str] = UNSET,
+    keyword_contains: Union[Unset, None, str] = UNSET,
 
 ) -> Optional[List[KeywordOut]]:
     """List all your keywords on the domain.
@@ -125,13 +125,13 @@ def sync(
         curl -X GET \
         -H \"Authorization: Token {your api_token here}\" \
         https://app.accuranker.com/overview/keywords_for_domain/{your domain id
-    here}\?keyword_match=test
+    here}\?keyword_contains=test
 
 
     Args:
         domain_id (int): Id of the domain to get keywords for.
-        keyword_match (Union[Unset, None, str]): Only returns keyword that contains the value of
-            keyword_match
+        keyword_contains (Union[Unset, None, str]): Only returns keyword that contains the value of
+            keyword_contains
 
     Returns:
         Response[List[KeywordOut]]
@@ -141,7 +141,7 @@ def sync(
     return sync_detailed(
         domain_id=domain_id,
 client=client,
-keyword_match=keyword_match,
+keyword_contains=keyword_contains,
 
     ).parsed
 
@@ -149,7 +149,7 @@ async def asyncio_detailed(
     domain_id: int,
     *,
     client: AuthenticatedClient,
-    keyword_match: Union[Unset, None, str] = UNSET,
+    keyword_contains: Union[Unset, None, str] = UNSET,
 
 ) -> Response[List[KeywordOut]]:
     """List all your keywords on the domain.
@@ -159,13 +159,13 @@ async def asyncio_detailed(
         curl -X GET \
         -H \"Authorization: Token {your api_token here}\" \
         https://app.accuranker.com/overview/keywords_for_domain/{your domain id
-    here}\?keyword_match=test
+    here}\?keyword_contains=test
 
 
     Args:
         domain_id (int): Id of the domain to get keywords for.
-        keyword_match (Union[Unset, None, str]): Only returns keyword that contains the value of
-            keyword_match
+        keyword_contains (Union[Unset, None, str]): Only returns keyword that contains the value of
+            keyword_contains
 
     Returns:
         Response[List[KeywordOut]]
@@ -175,7 +175,7 @@ async def asyncio_detailed(
     kwargs = _get_kwargs(
         domain_id=domain_id,
 client=client,
-keyword_match=keyword_match,
+keyword_contains=keyword_contains,
 
     )
 
@@ -190,7 +190,7 @@ async def asyncio(
     domain_id: int,
     *,
     client: AuthenticatedClient,
-    keyword_match: Union[Unset, None, str] = UNSET,
+    keyword_contains: Union[Unset, None, str] = UNSET,
 
 ) -> Optional[List[KeywordOut]]:
     """List all your keywords on the domain.
@@ -200,13 +200,13 @@ async def asyncio(
         curl -X GET \
         -H \"Authorization: Token {your api_token here}\" \
         https://app.accuranker.com/overview/keywords_for_domain/{your domain id
-    here}\?keyword_match=test
+    here}\?keyword_contains=test
 
 
     Args:
         domain_id (int): Id of the domain to get keywords for.
-        keyword_match (Union[Unset, None, str]): Only returns keyword that contains the value of
-            keyword_match
+        keyword_contains (Union[Unset, None, str]): Only returns keyword that contains the value of
+            keyword_contains
 
     Returns:
         Response[List[KeywordOut]]
@@ -216,7 +216,7 @@ async def asyncio(
     return (await asyncio_detailed(
         domain_id=domain_id,
 client=client,
-keyword_match=keyword_match,
+keyword_contains=keyword_contains,
 
     )).parsed
 
