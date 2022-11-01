@@ -1,4 +1,4 @@
-from typing import Any, Dict, Optional, Union, cast
+from typing import Any, Dict, Optional, Union, cast, List
 
 import httpx
 
@@ -66,7 +66,7 @@ def _get_kwargs(
     }
 
 
-def _parse_response(*, response: httpx.Response) -> Optional[Union[Any, Tag]]:
+def _parse_response(*, response: httpx.Response) -> Optional[Union[Any, List[Tag]]]:
     if response.status_code == 200:
         response_200 = Tag.from_dict(response.json())
 
@@ -88,7 +88,7 @@ def _parse_response(*, response: httpx.Response) -> Optional[Union[Any, Tag]]:
     return None
 
 
-def _build_response(*, response: httpx.Response) -> Response[Union[Any, Tag]]:
+def _build_response(*, response: httpx.Response) -> Response[Union[Any, List[Tag]]]:
     return Response(
         status_code=response.status_code,
         content=response.content,
@@ -108,7 +108,7 @@ def sync_detailed(
     period_to: Union[Unset, None, str] = UNSET,
     filter_: Union[Unset, None, int] = UNSET,
 
-) -> Response[Union[Any, Tag]]:
+) -> Response[Union[Any, List[Tag]]]:
     """
     Args:
         domain_pk (int):
@@ -120,7 +120,7 @@ def sync_detailed(
         filter_ (Union[Unset, None, int]):
 
     Returns:
-        Response[Union[Any, Tag]]
+        Response[Union[Any, List[Tag]]]
     """
 
 
@@ -154,7 +154,7 @@ def sync(
     period_to: Union[Unset, None, str] = UNSET,
     filter_: Union[Unset, None, int] = UNSET,
 
-) -> Optional[Union[Any, Tag]]:
+) -> Optional[Union[Any, List[Tag]]]:
     """
     Args:
         domain_pk (int):
@@ -166,7 +166,7 @@ def sync(
         filter_ (Union[Unset, None, int]):
 
     Returns:
-        Response[Union[Any, Tag]]
+        Response[Union[Any, List[Tag]]]
     """
 
 
@@ -193,7 +193,7 @@ async def asyncio_detailed(
     period_to: Union[Unset, None, str] = UNSET,
     filter_: Union[Unset, None, int] = UNSET,
 
-) -> Response[Union[Any, Tag]]:
+) -> Response[Union[Any, List[Tag]]]:
     """
     Args:
         domain_pk (int):
@@ -205,7 +205,7 @@ async def asyncio_detailed(
         filter_ (Union[Unset, None, int]):
 
     Returns:
-        Response[Union[Any, Tag]]
+        Response[Union[Any, List[Tag]]]
     """
 
 
@@ -239,7 +239,7 @@ async def asyncio(
     period_to: Union[Unset, None, str] = UNSET,
     filter_: Union[Unset, None, int] = UNSET,
 
-) -> Optional[Union[Any, Tag]]:
+) -> Optional[Union[Any, List[Tag]]]:
     """
     Args:
         domain_pk (int):
@@ -251,19 +251,19 @@ async def asyncio(
         filter_ (Union[Unset, None, int]):
 
     Returns:
-        Response[Union[Any, Tag]]
+        Response[Union[Any, List[Tag]]]
     """
 
 
     return (await asyncio_detailed(
         domain_pk=domain_pk,
-client=client,
-limit=limit,
-offset=offset,
-fields=fields,
-period_from=period_from,
-period_to=period_to,
-filter_=filter_,
+        client=client,
+        limit=limit,
+        offset=offset,
+        fields=fields,
+        period_from=period_from,
+        period_to=period_to,
+        filter_=filter_,
 
     )).parsed
 

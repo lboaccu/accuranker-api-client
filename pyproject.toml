@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "accuranker-api-client"
-version = "v4"
+version = "v1"
 description = "A client library for accessing AccuRanker API"
 
 authors = []
