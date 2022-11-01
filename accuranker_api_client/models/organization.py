@@ -7,7 +7,7 @@ from ..models.group_get import GroupGet
 T = TypeVar("T", bound="Organization")
 
 class OrganizationFields(NamedTuple):
-    org_name = "org_name"
+    organization_name = "organization_name"
     id = "id"
     groups = "groups"
 
@@ -15,19 +15,19 @@ class OrganizationFields(NamedTuple):
 class Organization:
     """
     Attributes:
-        org_name (str): The name of your organization/department. This will show up on reports.
+        organization_name (str): The name of your organization/department. This will show up on reports.
         id (int): Id of the organization
         groups (List[GroupGet]): List of group that belongs to this organization
     """
 
-    org_name: str
+    organization_name: str
     id: int
     groups: List[GroupGet]
     additional_properties: Dict[str, Any] = attr.ib(init=False, factory=dict)
 
 
     def to_dict(self) -> Dict[str, Any]:
-        org_name = self.org_name
+        organization_name = self.organization_name
         id = self.id
         groups = []
         for groups_item_data in self.groups:
@@ -42,7 +42,7 @@ class Organization:
         field_dict: Dict[str, Any] = {}
         field_dict.update(self.additional_properties)
         field_dict.update({
-            "org_name": org_name,
+            "organization_name": organization_name,
             "id": id,
             "groups": groups,
         })
@@ -54,7 +54,7 @@ class Organization:
     @classmethod
     def from_dict(cls: Type[T], src_dict: Dict[str, Any]) -> T:
         d = src_dict.copy() if src_dict else dict(src_dict.copy())
-        org_name = d.pop("org_name")
+        organization_name = d.pop("organization_name")
 
         id = d.pop("id")
 
@@ -69,7 +69,7 @@ class Organization:
 
 
         organization = cls(
-            org_name=org_name,
+            organization_name=organization_name,
             id=id,
             groups=groups,
         )
